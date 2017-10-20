@@ -16,12 +16,12 @@ public class Usuario {
     private java.sql.Date fecha_creacion; 
     private int id_rol;
     private String foto;
-    private int id_pàis;
+    private int id_pais;
     private String telefono;
     private String clave_acceso;
     private int estado;
 
-    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, Date fecha_nacimiento, Date fecha_creacion, int id_rol, String foto, int id_pàis, String telefono, String clave_acceso, int estado) {
+    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, Date fecha_nacimiento, Date fecha_creacion, int id_rol, String foto, int id_pais, String telefono, String clave_acceso, int estado) {
         this.id_usuario = id_usuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -31,7 +31,7 @@ public class Usuario {
         this.fecha_creacion = fecha_creacion;
         this.id_rol = id_rol;
         this.foto = foto;
-        this.id_pàis = id_pàis;
+        this.id_pais = id_pais;
         this.telefono = telefono;
         this.clave_acceso = clave_acceso;
         this.estado = estado;
@@ -109,12 +109,12 @@ public class Usuario {
         this.foto = foto;
     }
 
-    public int getId_pàis() {
-        return id_pàis;
+    public int getid_pais() {
+        return id_pais;
     }
 
-    public void setId_pàis(int id_pàis) {
-        this.id_pàis = id_pàis;
+    public void setid_pais(int id_pais) {
+        this.id_pais = id_pais;
     }
 
     public String getTelefono() {
