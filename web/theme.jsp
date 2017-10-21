@@ -32,6 +32,9 @@
                     </form>
                 </li>
             <% } %>
+            <li>
+                <a href="/ProyectoJava/Login">Login</a>
+            </li>
         </ul>
     </body>
 </html>
