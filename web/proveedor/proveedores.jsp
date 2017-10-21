@@ -13,34 +13,37 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Proveedores</h1>
-        <a href="admin/agregar-proveedor">Agregar proveedor</a>
-        <br><br><br>
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Dirección</th>
-                    <th>Teléfono</th>
-                    <th>Fax</th>
-                    <th>Fecha Creación</th>
-                    <th>Nombre comercial</th>
-                    <th>NIT</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${listaProveedor}" var="proveedor">
+        <jsp:include page="/theme.jsp" />
+        <div class="content">
+            <h1>Proveedores</h1>
+            <a href="admin/agregar-proveedor">Agregar proveedor</a>
+            <br><br><br>
+            <table>
+                <thead>
                     <tr>
-                        <td>${proveedor.getNombre()}</td>
-                        <td>${proveedor.getDireccion()}</td>
-                        <td>${proveedor.getTelefono()}</td>
-                        <td>${proveedor.getFax()}</td>
-                        <td>${proveedor.getFecha_creacion()}</td>
-                        <td>${proveedor.getNombre_comercial()}</td>
-                        <td>${proveedor.getNit()}</td>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Fax</th>
+                        <th>Fecha Creación</th>
+                        <th>Nombre comercial</th>
+                        <th>NIT</th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach items="${listaProveedor}" var="proveedor">
+                        <tr>
+                            <td>${proveedor.getNombre()}</td>
+                            <td>${proveedor.getDireccion()}</td>
+                            <td>${proveedor.getTelefono()}</td>
+                            <td>${proveedor.getFax()}</td>
+                            <td>${proveedor.getFecha_creacion()}</td>
+                            <td>${proveedor.getNombre_comercial()}</td>
+                            <td>${proveedor.getNit()}</td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
