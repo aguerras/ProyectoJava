@@ -17,13 +17,13 @@ and open the template in the editor.
                 <header class="header">
                     <h1>Iniciar sesión</h1>
                 </header>
-                <form>
+                <form action="Autenticacion" method="POST">
                     <div class="form-group">
-                        <input type="text" id="username" placeholder="Nombre de Usuario" required="required">
+                        <input type="text" id="username" placeholder="Correo electronico" name="txtEmail" required="required">
                         <div class="line"></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" id="password" placeholder="Contraseña" required="required">
+                        <input type="password" id="password" placeholder="Contraseña" name="txtPw" required="required">
                         <div class="line"></div>
                     </div>
                     <br>
