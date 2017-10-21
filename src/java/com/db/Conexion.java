@@ -1,10 +1,12 @@
-package java.com.db;
+package com.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,8 +24,8 @@ public class Conexion {
     public Conexion(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conexion=DriverManager.getConnection("jdbc:google:mysql://proyecto-java:dbproyecto-183021:us-central1:proyecto-java/proyecto", "root", "root");
-            stm=conexion.createStatement();
+            conexion = DriverManager.getConnection("jdbc:mysql://146.148.78.170:3306/proyecto", "root", "root");
+            stm = conexion.createStatement();
         }catch(InstantiationException e){
             e.printStackTrace();
         }catch(ClassNotFoundException e){
@@ -34,4 +36,61 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-}
+    
+    public String db_string (String query, String nulo) {
+        try{
+            String result = "";
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                result = rs.getString(1);
+            }
+            if (result.equals("")) {
+                return nulo;
+            }
+            return result;
+        } catch(SQLException e) {
+            
+        }
+        return nulo;
+    }
+    public ArrayList<String> db_list (String query) {
+        ArrayList<String> result = new ArrayList<String>();
+        try{
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                result.add(rs.getString(1));
+            }
+            
+        } catch(SQLException e) {
+            
+        }
+        return result;
+    }
+    public ArrayList<ArrayList> db_list_of_lists (String query) {
+        ArrayList<ArrayList> result = new ArrayList<ArrayList>();
+        try{
+            ResultSet rs = stm.executeQuery(query);
+            while (rs.next()) {
+                ArrayList<String> row = new ArrayList<String>();
+                ResultSetMetaData metaData = rs.getMetaData();
+                int count = metaData.getColumnCount();
+                for (int i = 1 ; i <= count ; i++) {
+                    row.add(rs.getString(i));
+                }
+                result.add(row);
+            }
+            
+        } catch(SQLException e) {
+            
+        }
+        return result;
+    }
+    
+    public void db_exec (String exec) {
+        try{
+            stm.executeUpdate(exec);
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+ }
