@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,18 +8,22 @@
         <title>Productos</title>
     </head>
     <body>
+        <jsp:include page="/theme.jsp" />
         <div class="content">
-            <div class="box-product">
-                <div class="col-left">
-                    <img src="../resources/imagen-no-disponible.gif" height="150px">
+            <a href="admin/agregar-producto">Agregar producto</a>
+            <c:forEach items="${listaProductos}" var="producto">
+                <div class="box-product">
+                    <div class="col-left">
+                        <img src="../resources/imagen-no-disponible.gif" height="150px">
+                    </div>
+                    <div class="col-right">
+                        <h2>${producto.getNombre_producto()}</h2>
+                        <span>${producto.getId_proveedor()}</span><br>
+                        <span>${producto.getTipo()}</span><br>
+                        <span>${producto.getPrecio()}</span>
+                    </div>
                 </div>
-                <div class="col-right">
-                    <h2>Nvidia GTX 1080 TI</h2>
-                    <span>proveedor</span><br>
-                    <span>stock</span><br>
-                    <span>precio</span>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </body>
 </html>

@@ -2,10 +2,7 @@ package com.data;
 
 import com.db.Conexion;
 import com.model.Producto;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,15 +26,15 @@ public class ProductoDatos {
     
     public List<Producto> getProductos() {
         String consulta = "SELECT "
-                + "prod.nombre_producto, "
-                + "prod.descripcion, "
-                + "prod.id_proveedor, "
-                + "prod.tipo, prod.precio, "
-                + "prod.descuento, "
-                + "prod.estado "
-                + "prov.nombre"nombre,direccion,telefono,fax,nombre_comercial,DATE_FORMAT(fecha_creacion,'%d-%m-%Y'),nit
-                + "FROM producto prod "
-                + "JOIN proveedor prov ON prov.id_proveedor = prod.id_proveedor";
+            + "prod.nombre_producto, "
+            + "prod.descripcion, "
+            + "prod.id_proveedor, "
+            + "prod.tipo, prod.precio, "
+            + "prod.descuento, "
+            + "prod.estado "
+            // + "prov.nombre"nombre,direccion,telefono,fax,nombre_comercial,DATE_FORMAT(fecha_creacion,'%d-%m-%Y'),nit
+            + "FROM producto prod "
+            + "JOIN proveedor prov ON prov.id_proveedor = prod.id_proveedor";
         
         List<Producto> listaProducto = new ArrayList<Producto>();
         List<ArrayList> lista = new ArrayList<ArrayList>(Conexion.getInstancia().db_list_of_lists(consulta));
