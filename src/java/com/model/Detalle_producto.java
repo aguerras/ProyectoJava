@@ -1,7 +1,5 @@
 package com.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author kguerra
@@ -11,9 +9,9 @@ public class Detalle_producto {
     private int cantidad;
     private int ilimitado;
     private int id_usuario_creacion;
-    private Date fecha_creacion;
+    private String fecha_creacion;
 
-    public Detalle_producto (int id_producto,int cantidad,int ilimitado,int id_usuario_creacion,Date fecha_creacion) {
+    public Detalle_producto (int id_producto,int cantidad,int ilimitado,int id_usuario_creacion,String fecha_creacion) {
         this.id_producto = id_producto;
         this.cantidad = cantidad;
         this.ilimitado = ilimitado;
@@ -49,10 +47,10 @@ public class Detalle_producto {
         this.id_usuario_creacion = id_usuario_creacion;
     }
 
-    public Date getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
-    public void setFecha_creacion(Date fecha_creacion) {
+    public void setFecha_creacion(String fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 }

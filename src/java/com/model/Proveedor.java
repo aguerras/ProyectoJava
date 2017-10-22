@@ -1,7 +1,5 @@
 package com.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author kguerra
@@ -13,13 +11,13 @@ public class Proveedor {
     private int telefono;
     private String fax;
     private int estado;
-    private Date fecha_creacion;
+    private String fecha_creacion;
     private String nombre_comercial;
     private String nit;
     private int documentacion_completa;
     private String observaciones;
 
-    public Proveedor (int id_proveedor,String nombre,String direccion,int telefono,String fax,int estado,Date fecha_creacion,String nombre_comercial,String nit,int documentacion_completa,String observaciones) {
+    public Proveedor (int id_proveedor,String nombre,String direccion,int telefono,String fax,int estado,String fecha_creacion,String nombre_comercial,String nit,int documentacion_completa,String observaciones) {
         this.id_proveedor = id_proveedor;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -75,10 +73,10 @@ public class Proveedor {
         this.estado = estado;
     }
 
-    public Date getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
-    public void setFecha_creacion(Date fecha_creacion) {
+    public void setFecha_creacion(String fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 

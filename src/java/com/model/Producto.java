@@ -1,7 +1,5 @@
 package com.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author kguerra

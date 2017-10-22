@@ -1,7 +1,5 @@
 package com.model;
 
-import java.sql.Date;
-
 /**
  *
  * @author Alexis
@@ -12,8 +10,8 @@ public class Usuario {
     private String apellidos;
     private int sexo;
     private String email;
-    private java.sql.Date fecha_nacimiento; 
-    private java.sql.Date fecha_creacion; 
+    private String fecha_nacimiento; 
+    private String fecha_creacion; 
     private int id_rol;
     private String foto;
     private int id_pais;
@@ -21,7 +19,7 @@ public class Usuario {
     private String clave_acceso;
     private int estado;
 
-    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, Date fecha_nacimiento, Date fecha_creacion, int id_rol, String foto, int id_pais, String telefono, String clave_acceso, int estado) {
+    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, String fecha_nacimiento, String fecha_creacion, int id_rol, String foto, int id_pais, String telefono, String clave_acceso, int estado) {
         this.id_usuario = id_usuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -77,19 +75,19 @@ public class Usuario {
         this.email = email;
     }
 
-    public Date getFecha_nacimiento() {
+    public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public Date getFecha_creacion() {
+    public String getFecha_creacion() {
         return fecha_creacion;
     }
 
-    public void setFecha_creacion(Date fecha_creacion) {
+    public void setFecha_creacion(String fecha_creacion) {
         this.fecha_creacion = fecha_creacion;
     }
 
@@ -140,6 +138,4 @@ public class Usuario {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-    
 }
