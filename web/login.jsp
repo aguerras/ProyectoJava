@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="resources/css/login.css">
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="/theme.jsp" />
         <div class="content">
             <div class="box-login">
                 <header class="header">

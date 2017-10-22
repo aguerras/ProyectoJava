@@ -16,8 +16,8 @@
         <jsp:include page="/theme.jsp" />
         <div class="content">
             <h1>Proveedores</h1>
-            <a href="admin/agregar-proveedor">Agregar proveedor</a>
-            <br><br><br>
+            <a class="button" href="admin/agregar-proveedor">Agregar proveedor</a>
+            <br><br>
             <table>
                 <thead>
                     <tr>
