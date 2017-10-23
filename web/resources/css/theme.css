@@ -108,3 +108,33 @@ tr {
     height: 0.5em;
     background-color:#fff;
 }
+
+/******************** FORMS ***********************/
+form {
+    display: table;
+    width: auto;
+}
+form .container-form {
+    display: table-row;
+}
+form .container-form .form-element {
+    display: table-row;
+    font-size: 1.09em;
+}
+form .container-form .form-element .form-label {
+    padding-top: 8px;
+    display: table-cell;
+    max-width: 255px;
+    word-wrap: break-word;
+    padding-right: 1em;
+}
+form .container-form .form-element .form-widget {
+    padding-top: 8px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+form .container-form .form-element .form-widget input {
+    padding: 0.3em 0.6em;
+    display: inline-block;
+}

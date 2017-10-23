@@ -17,6 +17,9 @@ public class Proveedor {
     private int documentacion_completa;
     private String observaciones;
 
+    public Proveedor () {
+    }
+
     public Proveedor (int id_proveedor,String nombre,String direccion,int telefono,String fax,int estado,String fecha_creacion,String nombre_comercial,String nit,int documentacion_completa,String observaciones) {
         this.id_proveedor = id_proveedor;
         this.nombre = nombre;

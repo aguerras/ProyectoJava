@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.data.ProveedorDatos;
+import com.db.Conexion;
+import com.model.Proveedor;
 
 /**
  *
@@ -20,8 +22,8 @@ public class ServletProveedor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
-        
-        request.setAttribute("listaProveedor", ProveedorDatos.getInstancia().getProveedores());
+        //request.setAttribute("listaProveedor", ProveedorDatos.getInstancia().getProveedores());
+        request.setAttribute("listaProveedor", Conexion.getInstancia().db_object(Proveedor.class));
         despachador = request.getRequestDispatcher("/proveedor/proveedores.jsp");
         despachador.forward(request, response);
     }
