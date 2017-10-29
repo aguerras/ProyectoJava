@@ -104,18 +104,26 @@ public class Conexion {
         }
     }
     
+    public List<Object> db_object(Class<?> claseX) {
+        return db_object(claseX, "");
+    }
+    
     //Función para obtener una lista de un objecto que se desea.
     //El parámetro claseX es el bean que se quiere obtener.
-    public List<Object> db_object(Class<?> claseX) {
+    public List<Object> db_object(Class<?> claseX, String where) {
         List<String> campos = getCamposClase(claseX);
         String camposJoin = String.join(",", campos);
         String nombreClase = claseX.getSimpleName();
         List<Object> listaObjeto = new ArrayList<Object>();
+        String clausula_where = "";
+        if (!where.equals("")) {
+            clausula_where = " WHERE " + where;
+        }
         try {
             //Se crea un variable tipo objecto donde contendrá el bean que se desea
             Object claseObjeto;
             //Se recorre la consulta del bean con los campos deseados, en este caso los campos declarados del bean.
-            for (ArrayList<String> lista : (db_list_of_lists("SELECT " + camposJoin + " FROM " + nombreClase.toLowerCase()))) {
+            for (ArrayList<String> lista : (db_list_of_lists("SELECT " + camposJoin + " FROM " + nombreClase.toLowerCase() + clausula_where))) {
                 claseObjeto = claseX.newInstance();
                 //Se recorre los campos declarados del bean.
                 for (int contador = 0; contador < campos.size(); contador++) {
@@ -128,6 +136,8 @@ public class Conexion {
                         obj = Integer.parseInt(lista.get(contador));
                     } else if (theType.equals("float")) {
                         obj = Float.parseFloat(lista.get(contador));
+                    } else if (theType.matches("com.model.(.*)")) {
+                        obj = db_object(Class.forName(theType),nombre + " = " + lista.get(contador)).get(0);
                     } else {
                         Class<?> theClass = Class.forName(theType);
                         obj = theClass.cast(lista.get(contador));

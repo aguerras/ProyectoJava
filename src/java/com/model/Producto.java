@@ -8,18 +8,21 @@ public class Producto {
     private int id_producto;
     private String nombre_producto;
     private String descripcion;
-    private int id_proveedor;
-    private int tipo;
+    private Proveedor id_proveedor;
+    private Tipo_producto id_tipo;
     private float precio;
     private float descuento;
     private int estado;
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, int id_proveedor, int tipo, float precio, float descuento, int estado) {
+    public Producto () {
+    }
+    
+    public Producto(int id_producto, String nombre_producto, String descripcion, Proveedor id_proveedor, Tipo_producto id_tipo, float precio, float descuento, int estado) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
         this.id_proveedor = id_proveedor;
-        this.tipo = tipo;
+        this.id_tipo = id_tipo;
         this.precio = precio;
         this.descuento = descuento;
         this.estado = estado;
@@ -49,20 +52,20 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public int getId_proveedor() {
+    public Proveedor getId_proveedor() {
         return id_proveedor;
     }
 
-    public void setId_proveedor(int id_proveedor) {
+    public void setId_proveedor(Proveedor id_proveedor) {
         this.id_proveedor = id_proveedor;
     }
 
-    public int getTipo() {
-        return tipo;
+    public Tipo_producto getId_tipo() {
+        return id_tipo;
     }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
+    public void setId_tipo(Tipo_producto id_tipo) {
+        this.id_tipo = id_tipo;
     }
 
     public float getPrecio() {

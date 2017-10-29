@@ -21,9 +21,12 @@
                 <a href="#">Tipos de producto</a>
             </li>
             <li>
+                <a href="/ProyectoJava/producto/productos">Productos</a>
+            </li>
+            <li>
                 <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
             </li>
-            <% java.util.ArrayList<String> listaPaginas = new java.util.ArrayList<String>(){{add("proveedores.jsp");add("producto.jsp");add("index.jsp");}}; %>
+            <% java.util.ArrayList<String> listaPaginas = new java.util.ArrayList<String>(){{add("proveedores.jsp");add("productos.jsp");add("index.jsp");}}; %>
             <% if (listaPaginas.contains(request.getServletPath().substring(request.getServletPath().lastIndexOf("/")+1))) { %>
                 <li id="search">
                     <form action="" method="get">

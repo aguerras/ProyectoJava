@@ -7,7 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.data.ProductoDatos;
+import com.db.Conexion;
+import com.model.Producto;
 
 /**
  *
@@ -21,7 +22,7 @@ public class ServletProductos extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
         
-        request.setAttribute("listaProductos", ProductoDatos.getInstancia().getProductos());
+        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class));
         despachador = request.getRequestDispatcher("/producto/productos.jsp");
         despachador.forward(request, response);
     }

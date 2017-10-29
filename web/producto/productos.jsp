@@ -10,20 +10,27 @@
     <body>
         <jsp:include page="/theme.jsp" />
         <div class="content">
-            <a href="admin/agregar-producto">Agregar producto</a>
-            <c:forEach items="${listaProductos}" var="producto">
-                <div class="box-product">
-                    <div class="col-left">
-                        <img src="../resources/imagen-no-disponible.gif" height="150px">
+            <a class="button" href="admin/agregar-producto">Agregar producto</a>
+            <br><br>
+            <div class="productos">
+                <c:forEach items="${listaProductos}" var="producto">
+                    <div class="box-product">
+                        <div class="col-left">
+                            <img src="../resources/imagen-no-disponible.gif" height="150px">
+                        </div>
+                        <div class="col-right">
+                            <div class="div-precio">
+                                <span class="precio">Q${producto.getPrecio()}</span>
+                            </div>
+                            <h2 class="nombre-producto">${producto.getNombre_producto()}</h2>
+                            <div class="div-proveedor">
+                                <span class="proveedor">${producto.getId_proveedor().getNombre()}</span>
+                            </div>
+                            <span class="tipo">${producto.getId_tipo().getNombre_tipo()}</span>
+                        </div>
                     </div>
-                    <div class="col-right">
-                        <h2>${producto.getNombre_producto()}</h2>
-                        <span>${producto.getId_proveedor()}</span><br>
-                        <span>${producto.getTipo()}</span><br>
-                        <span>${producto.getPrecio()}</span>
-                    </div>
-                </div>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </div>
     </body>
 </html>

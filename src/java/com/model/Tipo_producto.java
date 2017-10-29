@@ -8,6 +8,9 @@ public class Tipo_producto {
     private int id_tipo;
     private String nombre_tipo;
 
+    public Tipo_producto () {
+    }
+
     public Tipo_producto (int id_tipo,String nombre_tipo) {
         this.id_tipo = id_tipo;
         this.nombre_tipo = nombre_tipo;
