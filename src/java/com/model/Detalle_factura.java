@@ -5,27 +5,30 @@ package com.model;
  * @author kguerra
  */
 public class Detalle_factura {
-    private int id_factura;
-    private int id_producto;
+    private Factura id_factura;
+    private Producto id_producto;
     private int cantidad;
 
-    public Detalle_factura (int id_factura,int id_producto,int cantidad) {
+    public Detalle_factura() {
+    }
+    
+    public Detalle_factura (Factura id_factura,Producto id_producto,int cantidad) {
         this.id_factura = id_factura;
         this.id_producto = id_producto;
         this.cantidad = cantidad;
     }
 
-    public int getId_factura() {
+    public Factura getId_factura() {
         return id_factura;
     }
-    public void setId_factura(int id_factura) {
+    public void setId_factura(Factura id_factura) {
         this.id_factura = id_factura;
     }
 
-    public int getId_producto() {
+    public Producto getId_producto() {
         return id_producto;
     }
-    public void setId_producto(int id_producto) {
+    public void setId_producto(Producto id_producto) {
         this.id_producto = id_producto;
     }
 
