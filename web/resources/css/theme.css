@@ -138,3 +138,7 @@ form .container-form .form-element .form-widget input {
     padding: 0.3em 0.6em;
     display: inline-block;
 }
+form .container-form .form-element .form-widget select {
+    padding: 0.3em 0.6em;
+    display: inline-block;
+}
