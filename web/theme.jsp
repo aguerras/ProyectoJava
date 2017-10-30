@@ -18,9 +18,6 @@
                 <a href="/ProyectoJava/">Inicio</a>
             </li>
             <li>
-                <a href="#">Tipos de producto</a>
-            </li>
-            <li>
                 <a href="/ProyectoJava/producto/productos">Productos</a>
             </li>
             <li>

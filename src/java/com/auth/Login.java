@@ -36,8 +36,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         String date = "2000-11-01"; // YYYY-MM-DD
-        java.sql.Date sqlDate = java.sql.Date.valueOf(date);
-        Usuario user = new Usuario(1, "Alexis", "Guerra", 1, "aguerra2012201@gmail.com", sqlDate, sqlDate, 1, "", 1, "1222376", "abc", 1);
+        Usuario user = new Usuario(1, "Alexis", "Guerra", 1, "aguerra2012201@gmail.com", date, date, 1, "", 1, "1222376", "abc", 1);
         HttpSession session = request.getSession();
         String nombre = "";
         if (session.getAttribute("nombre") == null) {

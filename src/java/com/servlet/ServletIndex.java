@@ -1,5 +1,7 @@
 package com.servlet;
 
+import com.db.Conexion;
+import com.model.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,6 +22,7 @@ public class ServletIndex extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
+        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class));
         despachador = request.getRequestDispatcher("/index.jsp");
         despachador.forward(request, response);
     }
