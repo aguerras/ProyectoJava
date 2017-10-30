@@ -12,14 +12,17 @@ public class Usuario {
     private String email;
     private String fecha_nacimiento; 
     private String fecha_creacion; 
-    private int id_rol;
+    private Rol id_rol;
     private String foto;
-    private int id_pais;
+    private Pais id_pais;
     private String telefono;
     private String clave_acceso;
     private int estado;
 
-    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, String fecha_nacimiento, String fecha_creacion, int id_rol, String foto, int id_pais, String telefono, String clave_acceso, int estado) {
+    public Usuario() {
+    }
+
+    public Usuario(int id_usuario, String nombres, String apellidos, int sexo, String email, String fecha_nacimiento, String fecha_creacion, Rol id_rol, String foto, Pais id_pais, String telefono, String clave_acceso, int estado) {
         this.id_usuario = id_usuario;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -91,11 +94,11 @@ public class Usuario {
         this.fecha_creacion = fecha_creacion;
     }
 
-    public int getId_rol() {
+    public Rol getId_rol() {
         return id_rol;
     }
 
-    public void setId_rol(int id_rol) {
+    public void setId_rol(Rol id_rol) {
         this.id_rol = id_rol;
     }
 
@@ -107,11 +110,11 @@ public class Usuario {
         this.foto = foto;
     }
 
-    public int getid_pais() {
+    public Pais getId_pais() {
         return id_pais;
     }
 
-    public void setid_pais(int id_pais) {
+    public void setId_pais(Pais id_pais) {
         this.id_pais = id_pais;
     }
 

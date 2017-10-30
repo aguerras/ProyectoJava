@@ -11,6 +11,9 @@ public class Rol {
     private String fecha_creacion;
     private String fecha_modificacion;
     
+    public Rol() {
+    }
+    
     public Rol (String nombre_rol,String descripcion,String fecha_creacion,String fecha_modificacion) {
         this.nombre_rol = nombre_rol;
         this.descripcion = descripcion;
