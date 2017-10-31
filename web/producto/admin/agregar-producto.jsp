@@ -57,10 +57,6 @@
                         <div class="form-label">Descuento:</div>
                         <div class="form-widget"><input type="text" name="descuento" id="descuento" value="${producto.getDescuento()}"></div>
                     </div>
-                    <%-- <div class="form-element">
-                        <div class="form-label">Imágen del producto:</div>
-                        <div class="form-widget"><input type="file" name="path_img" id="path_img"></div>
-                    </div>--%>
                     <div class="form-element">
                         <div class="form-label">Tipo de producto:</div>
                         <div class="form-widget">
@@ -77,6 +73,10 @@
                                 </c:forEach>
                             </select>
                         </div>
+                    </div>
+                    <div class="form-element">
+                        <div class="form-label">Imágen del producto:</div>
+                        <div class="form-widget"><input type="url" name="path_img" id="path_img"></div>
                     </div>
                     <br><input class="button" type="submit" value="Enviar">
                 </div>
