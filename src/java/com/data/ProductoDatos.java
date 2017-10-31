@@ -47,8 +47,8 @@ public class ProductoDatos {
             + ", id_tipo = "+ id_tipo 
             + ", precio = "+ precio
             + ", descuento = "+ descuento
-            + ", path_img = "+ path_img
-            + ", cantidad = "+ cantidad
+            + ", path_img = '"+ path_img
+            + "', cantidad = "+ cantidad
             + ", estado = 1"
             + " WHERE id_producto = " + id_producto);
     }
