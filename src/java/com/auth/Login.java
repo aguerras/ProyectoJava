@@ -5,6 +5,7 @@
  */
 package com.auth;
 
+import com.db.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,23 +36,20 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        String date = "2000-11-01"; // YYYY-MM-DD
-        Usuario user = new Usuario(1, "Alexis", "Guerra", 1, "aguerra2012201@gmail.com", date, date, 1, "", 1, "1222376", "abc", 1);
         HttpSession session = request.getSession();
-        String nombre = "";
-        if (session.getAttribute("nombre") == null) {
-            Usuario usuario = (Usuario)user;
-            // usuario = (Usuario)query.list().get(0);
+        if (session.getAttribute("user") == null) {
             try {
-                session.setAttribute("user", usuario);
-                response.sendRedirect(request.getContextPath() + "/Test");
+                Usuario user = (Usuario) Conexion.getInstancia().db_object(Usuario.class, "email = '" + request.getParameter("email") + "' AND clave_acceso = md5('" + request.getParameter("clave") + "');").get(0);
+                if (user != null) {
+                    session.setAttribute("user", user);
+                    // response.sendRedirect(request.getContextPath() + "/index");
+                }
             } catch(Exception e) {
+                session.setAttribute("error", "Los datos estan incorrectos.");
                 System.out.println(e);
             }
-        } else {
-            nombre = (String)session.getAttribute("nombre");
-            response.sendRedirect(request.getContextPath() + "/Test");
         }
+        response.sendRedirect(request.getContextPath() + "/Login");
     }
 
     @Override

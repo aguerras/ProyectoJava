@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,9 +33,21 @@
                     </form>
                 </li>
             <% } %>
-            <li>
-                <a href="/ProyectoJava/Login">Login</a>
-            </li>
+            
+            <% if (session.getAttribute("user") == null) { %>
+                <li>
+                    <a href="/ProyectoJava/Login">Login</a>
+                </li>
+            <% } else { %>
+                <li>
+                    <a>
+                        ${user.getNombres()}
+                    </a>
+                </li>
+                <li>
+                    <a href="/ProyectoJava/Logout">Cerrar Sesion</a>
+                </li>
+            <% } %>
         </ul>
     </body>
 </html>

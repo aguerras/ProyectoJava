@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<% if (session.getAttribute("user") != null) { %>
+    <script>location.href='index';</script>
+<% } %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,6 +35,7 @@
                     <button class="button">Login</button>
                 </form>
                 <a href="/ProyectoJava/Registro">Registrarse</a>
+                <p style="color: #ff0000">${error}</p>
             </div>
         </div>
     </body>
