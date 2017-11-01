@@ -9,14 +9,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link rel="stylesheet" type="text/css" href="resources/css/productos.css">
         <title>Inicio</title>
     </head>
     <body>
         <jsp:include page="/theme.jsp" />
         <div class="content">
-            <div class="productos">
+            <div class="categorias">
+                <h2>
+                    Categorias
+                    <c:if test="${id_tipo != ''}">
+                        <a href="index">(Limpiar)</a>
+                    </c:if>
+                </h2>
+                <div>
+                    <c:forEach items="${listaTipo}" var="tipo">
+                        <c:choose>
+                            <c:when test="${tipo.getId_tipo() == id_tipo}">
+                                <div class="box-tipo selected"><a href="index?id_tipo=${tipo.getId_tipo()}">${tipo.getNombre_tipo()}</a></div>
+                            </c:when>    
+                            <c:otherwise>
+                                <div class="box-tipo"><a href="index?id_tipo=${tipo.getId_tipo()}">${tipo.getNombre_tipo()}</a></div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+            </div>
+            <div class="productos-index">
                 <c:forEach items="${listaProductos}" var="producto">
                     <div class="box-product">
                         <div class="col-left">

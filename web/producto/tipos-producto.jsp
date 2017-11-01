@@ -22,12 +22,14 @@
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach items="${listaTiposProducto}" var="tipo">
                         <tr>
                             <td>${tipo.getNombre_tipo()}</td>
+                            <td><a href="admin/eliminar-tipo?id_tipo=${tipo.getId_tipo()}">Eliminar</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

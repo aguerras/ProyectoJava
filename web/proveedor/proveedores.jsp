@@ -28,6 +28,7 @@
                         <th>Fecha Creación</th>
                         <th>Nombre comercial</th>
                         <th>NIT</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@
                             <td>${proveedor.getFecha_creacion()}</td>
                             <td>${proveedor.getNombre_comercial()}</td>
                             <td>${proveedor.getNit()}</td>
+                            <td><a href="admin/eliminar-proveedor?id_proveedor=${proveedor.getId_proveedor()}">Eliminar</a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
