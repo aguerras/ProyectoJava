@@ -18,27 +18,29 @@
             <li id="inicio">
                 <a href="/ProyectoJava/">Inicio</a>
             </li>
-            <li>
-                <a href="/ProyectoJava/producto/productos">Productos</a>
-            </li>
-            <li>
-                <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
-            </li>
-            <% java.util.ArrayList<String> listaPaginas = new java.util.ArrayList<String>(){{add("proveedores.jsp");add("productos.jsp");add("index.jsp");}}; %>
-            <% if (listaPaginas.contains(request.getServletPath().substring(request.getServletPath().lastIndexOf("/")+1))) { %>
-                <li id="search">
-                    <form action="" method="get">
-                        <input type="text" id="search_text" placeholder="Search"/>
-                        <input type="button" id="search_button">
-                    </form>
-                </li>
-            <% } %>
-            
             <% if (session.getAttribute("user") == null) { %>
                 <li>
                     <a href="/ProyectoJava/Login">Login</a>
                 </li>
             <% } else { %>
+                <li>
+                    <a href="/ProyectoJava/producto/productos">Productos</a>
+                </li>
+                <li>
+                    <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
+                </li>
+                <li>
+                    <a href="/ProyectoJava/reportes/">Reportes</a>
+                </li>
+                <% java.util.ArrayList<String> listaPaginas = new java.util.ArrayList<String>(){{add("index.jsp");}}; %>
+                <% if (listaPaginas.contains(request.getServletPath().substring(request.getServletPath().lastIndexOf("/")+1))) { %>
+                    <li id="search">
+                        <form action="" method="get">
+                            <input type="text" id="search_text" placeholder="Search"/>
+                            <input type="button" id="search_button">
+                        </form>
+                    </li>
+                <% } %>
                 <li>
                     <a>
                         ${user.getNombres()}
