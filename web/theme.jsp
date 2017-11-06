@@ -46,6 +46,9 @@
                         ${user.getNombres()}
                     </a>
                 </li>
+                <li> 
+                    <a href="/ProyectoJava/carritoDeCompras/carrito" id="carrito_boton"></a>
+                </li>
                 <li>
                     <a href="/ProyectoJava/Logout">Cerrar Sesion</a>
                 </li>
