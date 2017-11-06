@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
+﻿@import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 body {
     background: #e9e9e9;
@@ -141,4 +141,27 @@ form .container-form .form-element .form-widget input {
 form .container-form .form-element .form-widget select {
     padding: 0.3em 0.6em;
     display: inline-block;
+}
+/******************** CARRITO DE COMPRAS ***********************/
+#carrito_boton {
+    border: 0 none;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 60px;
+    cursor: pointer;
+    background: #232323 url(/ProyectoJava/resources/shopping-car-white.png) center no-repeat;
+    background-size: 60%;
+}
+#delete_item {
+    border: 0 none;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 60px;
+    cursor: pointer;
+    background: url(/ProyectoJava/resources/delete.png) center no-repeat;
+	background-size: 50%;
 }

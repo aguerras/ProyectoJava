@@ -64,7 +64,7 @@
                                     <span style="color:red;font-size:15px;float:right;">Sin stock</span>
                                 </c:when>    
                                 <c:otherwise>
-                                    <a class="button" href="#" style="float:right;">Añadir al carrito</a>
+                                    <a class="button" href="carritoDeCompras/agregar?id_producto=${producto.getId_producto()}" style="float:right;">Añadir al carrito</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>

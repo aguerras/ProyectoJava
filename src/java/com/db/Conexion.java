@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -102,6 +103,29 @@ public class Conexion {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    //Función para para ejecutar Inserts y obtener el ultimo id ingresado.
+    public int db_insert (String exec) {
+        PreparedStatement preparedStatement = null;
+        ResultSet generatedKeys = null;
+        
+        try {
+            preparedStatement = (PreparedStatement) conexion.prepareStatement(exec, Statement.RETURN_GENERATED_KEYS);
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                return 0;
+            }
+            generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                return generatedKeys.getInt(1);
+            } else {
+                return 0;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
     }
     
     public List<Object> db_object(Class<?> claseX) {
