@@ -61,6 +61,11 @@
                                     <span class="precioOferta ng-binding">Q</span><span class="precioOferta ng-binding">${total}</span>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <a href="/ProyectoJava/producto/comprar" id="buy_items"></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

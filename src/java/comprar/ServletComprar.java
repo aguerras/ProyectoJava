@@ -1,6 +1,6 @@
-package com.servlet.carrito.AEM;
+package comprar;
 
-import com.data.PedidoDatos;
+import com.data.FacturaDatos;
 import com.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,21 +16,19 @@ import javax.servlet.http.HttpSession;
  *
  * @author Alexis
  */
-@WebServlet(name = "ServletAgregarCarrito", urlPatterns = {"/carritoDeCompras/agregar"})
-public class ServletAgregarPedidoCarrito extends HttpServlet {
+@WebServlet(name = "ServletComprar", urlPatterns = {"/producto/comprar"})
+public class ServletComprar extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher despachador=null;
         HttpSession session = request.getSession();
         if (session.getAttribute("user") == null) {
             response.sendRedirect(request.getContextPath() + "/Login");
         } else {
-            Usuario user = (Usuario) session.getAttribute("user");
-            if(request.getParameter("id_producto") != null) {
-                PedidoDatos.getInstancia().insertarPedido(String.valueOf(user.getId_usuario()), request.getParameter("id_producto"));
-            }
+            int id_usuario = ((Usuario) session.getAttribute("user")).getId_usuario();
+            RequestDispatcher despachador=null;
+            FacturaDatos.getInstancia().insertarFactura(String.valueOf(id_usuario));
             response.sendRedirect(request.getContextPath() + "/carritoDeCompras/carrito");
         }
     }
@@ -38,6 +36,7 @@ public class ServletAgregarPedidoCarrito extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
     }
 
     @Override

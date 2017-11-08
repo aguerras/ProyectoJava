@@ -30,6 +30,19 @@ public class PedidoDatos {
         return Conexion.getInstancia().db_object(Detalle_pedido.class, "id_pedido = " + id_pedido);
     }
     
+    public float getPrecioTotal(String id_usuario) {
+        String id_pedido = Conexion.getInstancia().db_string("SELECT id_pedido FROM pedido WHERE id_usuario = " + id_usuario, "");
+        float precio_total = 0;
+        if (!id_pedido.isEmpty()) {
+            List<Detalle_pedido> pedidos = (List<Detalle_pedido>)(List<?>) PedidoDatos.getInstancia().getPedidos(id_pedido);
+            for (int i = 0; i < pedidos.size(); i++) {
+                Detalle_pedido detallePedido = (Detalle_pedido) pedidos.get(i);
+                precio_total = precio_total + (detallePedido.getId_producto().getPrecio() * detallePedido.getCantidad());
+            }
+        }
+        return precio_total;
+    }
+    
     // Funcion insertarPedido para insertar un pedido en el carrito en la base de datos.
     public void insertarPedido(String id_usuario, String id_producto) {
         Producto producto = (Producto) Conexion.getInstancia().db_object(Producto.class, "id_producto = " + id_producto).get(0);
@@ -37,7 +50,6 @@ public class PedidoDatos {
         int cantidad = 1;
         String id_pedido = "";
         Pedido pedido = null;
-        Detalle_pedido detalle_pedido = null;
         
         List<Pedido> pedidos = (List<Pedido>)(List<?>) Conexion.getInstancia().db_object(Pedido.class, "id_usuario = " + id_usuario);
         if (!pedidos.isEmpty()) {
@@ -47,7 +59,7 @@ public class PedidoDatos {
             Conexion.getInstancia().db_exec("Update pedido SET precio_total = " + precio_total + " WHERE id_pedido = " + pedido.getId_pedido());
             List<Detalle_pedido> detalles_pedido = (List<Detalle_pedido>)(List<?>) Conexion.getInstancia().db_object(Detalle_pedido.class, "id_pedido = " + pedido.getId_pedido() + " AND id_producto = " + id_producto);
             if (!detalles_pedido.isEmpty()) {
-                detalle_pedido = detalles_pedido.get(0);
+                Detalle_pedido detalle_pedido = detalles_pedido.get(0);
                 cantidad = cantidad + detalle_pedido.getCantidad();
                 Conexion.getInstancia().db_exec("Update detalle_pedido SET cantidad = " + cantidad + " WHERE id_pedido = " + pedido.getId_pedido() + " AND id_producto = " + id_producto);
                 return;
@@ -98,18 +110,26 @@ public class PedidoDatos {
     
     //Función para eliminar un pedido en la DB.
     public void eliminarPedido(String id_usuario, String id_producto) {
-        String id_pedido = "";
         Pedido pedido = (Pedido) Conexion.getInstancia().db_object(Pedido.class, "id_usuario = " + id_usuario).get(0);
         Producto producto = (Producto) Conexion.getInstancia().db_object(Producto.class, "id_producto = " + id_producto).get(0);
-        id_pedido = String.valueOf(pedido.getId_pedido());
+        String id_pedido = String.valueOf(pedido.getId_pedido());
         if (pedido != null && producto != null) {
             Detalle_pedido detalle = (Detalle_pedido) Conexion.getInstancia().db_object(Detalle_pedido.class, "id_pedido = " + id_pedido).get(0);
             if (detalle != null) {
                 float precio_total = pedido.getPrecio_total() - (detalle.getCantidad() * producto.getPrecio());
-                Conexion.getInstancia().db_exec("Update pedido SET precio_total = " + precio_total + " WHERE id_pedido = " + id_pedido);
+                Conexion.getInstancia().db_exec("UPDATE pedido SET precio_total = " + precio_total + " WHERE id_pedido = " + id_pedido);
                 Conexion.getInstancia().db_exec("DELETE FROM detalle_pedido WHERE id_pedido = " + id_pedido + " AND id_producto = " + id_producto);
                 this.setPrecioTotal(id_pedido);
             }
+        }
+    }
+    
+    public void eliminarPedidos(String id_usuario) {
+        Pedido pedido = (Pedido) Conexion.getInstancia().db_object(Pedido.class, "id_usuario = " + id_usuario).get(0);
+        String id_pedido = String.valueOf(pedido.getId_pedido());
+        if (!id_pedido.isEmpty()) {
+            Conexion.getInstancia().db_exec("DELETE FROM detalle_pedido WHERE id_pedido = " + id_pedido);
+            Conexion.getInstancia().db_exec("DELETE FROM pedido WHERE id_usuario = " + id_usuario);
         }
     }
 }

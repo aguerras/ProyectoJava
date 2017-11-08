@@ -8,17 +8,15 @@ public class Factura {
     private int id_factura;
     private int precio_total;
     private Usuario id_usuario;
-    private Facturacion id_facturacion;
     private Tipo_factura id_tipo;
     private String fecha_facturacion;
 
     public Factura() {
     }
     
-    public Factura(int precio_total, Usuario id_usuario, Facturacion id_facturacion, Tipo_factura id_tipo, String fecha_facturacion) {
+    public Factura(int precio_total, Usuario id_usuario, Tipo_factura id_tipo, String fecha_facturacion) {
         this.precio_total = precio_total;
         this.id_usuario = id_usuario;
-        this.id_facturacion = id_facturacion;
         this.id_tipo = id_tipo;
         this.fecha_facturacion = fecha_facturacion;
     }
@@ -47,14 +45,6 @@ public class Factura {
         this.id_usuario = id_usuario;
     }
 
-    public Facturacion getId_facturacion() {
-        return id_facturacion;
-    }
-
-    public void setId_facturacion(Facturacion id_facturacion) {
-        this.id_facturacion = id_facturacion;
-    }
-
     public Tipo_factura getId_tipo() {
         return id_tipo;
     }
@@ -70,6 +60,4 @@ public class Factura {
     public void setFecha_facturacion(String fecha_facturacion) {
         this.fecha_facturacion = fecha_facturacion;
     }
-
-    
 }
