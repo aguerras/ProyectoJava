@@ -165,3 +165,14 @@ form .container-form .form-element .form-widget select {
     background: url(/ProyectoJava/resources/delete.png) center no-repeat;
 	background-size: 50%;
 }
+#buy_items {
+    border: 0 none;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 60px;
+    cursor: pointer;
+    background: url(/ProyectoJava/resources/buy.png) center no-repeat;
+	background-size: 50%;
+}
