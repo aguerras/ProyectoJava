@@ -2,9 +2,6 @@ package com.data;
 
 import com.db.Conexion;
 import com.model.Detalle_pedido;
-import com.model.Pedido;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,17 +20,15 @@ public class FacturaDatos {
         return instancia;
     }
     
-    public void insertarFactura(String id_usuario) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
-        String fecha = sdf.format(new Date());
+    public String insertarFactura(String id_usuario) {
+        String id_factura = "";
         String id_pedido = Conexion.getInstancia().db_string("SELECT id_pedido FROM pedido WHERE id_usuario = " + id_usuario, "");
         float precio_total = PedidoDatos.getInstancia().getPrecioTotal(id_usuario);
         if (precio_total != 0) {
-            String id_factura = String.valueOf(Conexion.getInstancia().db_insert("INSERT INTO factura (precio_total, id_usuario, id_tipo, fecha_facturacion) "
+            id_factura = String.valueOf(Conexion.getInstancia().db_insert("INSERT INTO factura (precio_total, id_usuario, id_tipo, fecha_facturacion) "
                 + "VALUES ("+ precio_total
                 + ","+ id_usuario
-                + ",1," + fecha
-                + ");"));
+                + ",1,now());"));
 
             if (!id_factura.isEmpty()) {
                 List<Detalle_pedido> pedidos = (List<Detalle_pedido>)(List<?>) PedidoDatos.getInstancia().getPedidos(id_pedido);
@@ -47,10 +42,14 @@ public class FacturaDatos {
                             + ","+ id_producto
                             + ","+ cantidad
                             + ")");
+                        String cantidad_actual = Conexion.getInstancia().db_string("SELECT cantidad - " + cantidad + " FROM producto where id_producto = " + id_producto, "");
+                        Conexion.getInstancia().db_exec("UPDATE producto SET cantidad = " + cantidad_actual + " WHERE id_producto = " + id_producto);
                     }
                 }
             }
         }
         PedidoDatos.getInstancia().eliminarPedidos(id_usuario);
+        
+        return id_factura;
     }
 }

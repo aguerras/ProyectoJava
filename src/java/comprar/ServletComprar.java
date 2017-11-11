@@ -1,9 +1,11 @@
 package comprar;
 
 import com.data.FacturaDatos;
+import com.db.Conexion;
+import com.model.Detalle_factura;
+import com.model.Factura;
 import com.model.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,8 +30,12 @@ public class ServletComprar extends HttpServlet {
         } else {
             int id_usuario = ((Usuario) session.getAttribute("user")).getId_usuario();
             RequestDispatcher despachador=null;
-            FacturaDatos.getInstancia().insertarFactura(String.valueOf(id_usuario));
-            response.sendRedirect(request.getContextPath() + "/carritoDeCompras/carrito");
+            String id_factura = FacturaDatos.getInstancia().insertarFactura(String.valueOf(id_usuario));
+            request.setAttribute("usuarioNombre",((Usuario) session.getAttribute("user")).getNombres() + " " + ((Usuario) session.getAttribute("user")).getApellidos());
+            request.setAttribute("listaDetalleFactura",Conexion.getInstancia().db_object(Detalle_factura.class,"id_factura = " + id_factura));
+            request.setAttribute("factura",Conexion.getInstancia().db_object(Factura.class,"id_factura = " + id_factura).get(0));
+            despachador = request.getRequestDispatcher("/producto/comprar.jsp");
+            despachador.forward(request, response);
         }
     }
 

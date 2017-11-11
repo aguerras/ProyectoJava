@@ -21,7 +21,7 @@ public class ServletProveedor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
-        request.setAttribute("listaProveedor", Conexion.getInstancia().db_object(Proveedor.class));
+        request.setAttribute("listaProveedor", Conexion.getInstancia().db_object(Proveedor.class,"estado = 1"));
         despachador = request.getRequestDispatcher("/proveedor/proveedores.jsp");
         despachador.forward(request, response);
     }

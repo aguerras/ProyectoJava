@@ -14,22 +14,23 @@
     </head>
     <body>
         <jsp:include page="/theme.jsp" />
+        <div class="content">
         <div id="pedidoCupones" class="modal-body ng-scope">
             <div class="row">
                 <table class="table table-striped table-bordered table-condensed">
                     <thead>
                         <tr>
-                            <th width="60%"><label>Articulo</label></th>
-                            <th width="10%"><label>Cantidad</label></th>
-                            <th width="15%"><label>Precio U.</label></th>
-                            <th width="15%"><label>Precio T.</label></th>
+                            <th width="40%"><label>Articulo</label></th>
+                            <th><label>Cantidad</label></th>
+                            <th><label>Precio U.</label></th>
+                            <th><label>Precio T.</label></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach items="${listaDetallePedidos}" var="pedido">
                             <tr>
                                 <td>
-                                    <a href="/ProyectoJava/carritoDeCompras/eliminar?id_producto=${pedido.getId_producto().getId_producto()}" id="delete_item"></a>
                                     <c:choose>
                                         <c:when test="${pedido.getId_producto().getPath_img() != '' && pedido.getId_producto().getPath_img() != null && pedido.getId_producto().getPath_img() != 'null'}">
                                             <img src="${pedido.getId_producto().getPath_img()}" height="50px">
@@ -43,11 +44,13 @@
                                 <td>${pedido.getCantidad()}</td>
                                 <td>${pedido.getId_producto().getPrecio()}</td>
                                 <td>${pedido.getId_producto().getPrecio() * pedido.getCantidad()}</td>
+                                <td><a href="/ProyectoJava/carritoDeCompras/eliminar?id_producto=${pedido.getId_producto().getId_producto()}" id="delete_item"></a></td>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-6"><span><label class="ng-binding">${articulos}</label></span><span> artículo(s)</span></div>
                 <div class="col-md-6">
@@ -61,15 +64,13 @@
                                     <span class="precioOferta ng-binding">Q</span><span class="precioOferta ng-binding">${total}</span>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="/ProyectoJava/producto/comprar" id="buy_items"></a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <br>
+            <a style="height: 35px;width:35px;background-image: url(/ProyectoJava/resources/shopping-car-white.png);background-size: 60%;background-repeat: no-repeat;background-position: center;" class="button" href="/ProyectoJava/producto/comprar" ></a>
+        </div>
         </div>
     </body>
 </html>

@@ -11,9 +11,12 @@ package com.model;
  */
 public class Tipo_factura {
     private int id_tipo;
-    private int nombre_factura;
+    private String nombre_factura;
 
-    public Tipo_factura (int id_tipo,int nombre_factura) {
+    public Tipo_factura() {
+    }
+
+    public Tipo_factura (int id_tipo,String nombre_factura) {
         this.id_tipo = id_tipo;
         this.nombre_factura = nombre_factura;
     }
@@ -25,10 +28,10 @@ public class Tipo_factura {
         this.id_tipo = id_tipo;
     }
 
-    public int getNombre_factura() {
+    public String getNombre_factura() {
         return nombre_factura;
     }
-    public void setNombre_factura(int nombre_factura) {
+    public void setNombre_factura(String nombre_factura) {
         this.nombre_factura = nombre_factura;
     }
 }

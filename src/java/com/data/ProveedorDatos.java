@@ -57,6 +57,6 @@ public class ProveedorDatos {
     
     //Función para eliminar un proveedor en la DB.
     public void eliminarProveedor(String id_proveedor) {
-        Conexion.getInstancia().db_exec("DELETE FROM proveedor WHERE id_proveedor = " + id_proveedor);
+        Conexion.getInstancia().db_exec("UPDATE proveedor SET estado = 0 WHERE id_proveedor = " + id_proveedor);
     }
 }

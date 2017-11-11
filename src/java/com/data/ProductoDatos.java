@@ -55,7 +55,7 @@ public class ProductoDatos {
     
     //Función para eliminar un producto en la DB.
     public void eliminarProducto(String id_producto) {
-        Conexion.getInstancia().db_exec("DELETE FROM producto WHERE id_producto = " + id_producto);
+        Conexion.getInstancia().db_exec("UPDATE producto SET estado = 0 WHERE id_producto = " + id_producto);
     }
     
     //Función para insertar un tipo de producto en la DB.
@@ -72,6 +72,6 @@ public class ProductoDatos {
     
     //Función para eliminar un tipo de producto en la DB.
     public void eliminarTipoProducto(String id_tipo) {
-        Conexion.getInstancia().db_exec("DELETE FROM tipo_producto WHERE id_tipo = " + id_tipo);
+        Conexion.getInstancia().db_exec("UPDATE tipo_producto SET estado = 0 WHERE id_tipo = " + id_tipo);
     }
 }

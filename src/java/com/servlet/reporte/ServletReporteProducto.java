@@ -1,7 +1,5 @@
-package com.servlet.producto;
+package com.servlet.reporte;
 
-import com.db.Conexion;
-import com.model.Tipo_producto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,16 +13,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kguerra
  */
-@WebServlet(name = "ServletTiposProducto", urlPatterns = {"/producto/tipos-producto"})
-public class ServletTiposProducto extends HttpServlet {
-
-    @Override
+@WebServlet(name = "ServletReporteProducto", urlPatterns = {"/reportes/reporteProducto"})
+public class ServletReporteProducto extends HttpServlet {
+    
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
         
-        request.setAttribute("listaTiposProducto", Conexion.getInstancia().db_object(Tipo_producto.class,"estado = 1"));
-        despachador = request.getRequestDispatcher("/producto/tipos-producto.jsp");
+        despachador = request.getRequestDispatcher("/reportes/reporteProducto.jsp");
         despachador.forward(request, response);
     }
 
