@@ -45,6 +45,10 @@
                         <div class="line"></div>
                     </div>
                     <div class="form-group">
+                        <input type="text" id="usuario_foto" placeholder="Foto" name="foto" required="required">
+                        <div class="line"></div>
+                    </div>
+                    <div class="form-group">
                         <select id="pais"  name="pais">
                             <option value="1">Guatemala</option>
                         </select>
