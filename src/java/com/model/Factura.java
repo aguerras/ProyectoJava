@@ -14,7 +14,8 @@ public class Factura {
     public Factura() {
     }
     
-    public Factura(int precio_total, Usuario id_usuario, Tipo_factura id_tipo, String fecha_facturacion) {
+    public Factura(int id_factura, int precio_total, Usuario id_usuario, Tipo_factura id_tipo, String fecha_facturacion) {
+        this.id_factura = id_factura;
         this.precio_total = precio_total;
         this.id_usuario = id_usuario;
         this.id_tipo = id_tipo;

@@ -29,28 +29,23 @@
                 <li>
                     <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
                 </li>
-                <li>
-                    <a href="/ProyectoJava/reportes/">Reportes</a>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Reportes</a>
+                    <div class="dropdown-content">
+                        <a href="/ProyectoJava/reportes/reporteBasico">Reporte de Facturas</a>
+                        <a href="/ProyectoJava/reportes/reporteProducto">Reporte de productos vendidos</a>
+                    </div>
                 </li>
-                <% java.util.ArrayList<String> listaPaginas = new java.util.ArrayList<String>(){{add("index.jsp");}}; %>
-                <% if (listaPaginas.contains(request.getServletPath().substring(request.getServletPath().lastIndexOf("/")+1))) { %>
-                    <li id="search">
-                        <form action="" method="get">
-                            <input type="text" id="search_text" placeholder="Search"/>
-                            <input type="button" id="search_button">
-                        </form>
-                    </li>
-                <% } %>
-                <li>
+                <li style="float: right;">
+                    <a href="/ProyectoJava/Logout">Cerrar Sesion</a>
+                </li>
+                <li style="float: right;"> 
+                    <a href="/ProyectoJava/carritoDeCompras/carrito" id="carrito_boton"></a>
+                </li>
+                <li style="float: right;">
                     <a>
                         ${user.getNombres()}
                     </a>
-                </li>
-                <li> 
-                    <a href="/ProyectoJava/carritoDeCompras/carrito" id="carrito_boton"></a>
-                </li>
-                <li>
-                    <a href="/ProyectoJava/Logout">Cerrar Sesion</a>
                 </li>
             <% } %>
         </ul>

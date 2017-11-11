@@ -25,10 +25,10 @@ public class ServletIndex extends HttpServlet {
         String clausula_tipo = "";
         String id_tipo = "";
         if(request.getParameter("id_tipo") != null) {
-            clausula_tipo = "id_tipo = "+request.getParameter("id_tipo");
+            clausula_tipo = " and id_tipo = "+request.getParameter("id_tipo");
             id_tipo = request.getParameter("id_tipo");
         }
-        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class,clausula_tipo));
+        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class,"estado = 1" + clausula_tipo));
         request.setAttribute("listaTipo", Conexion.getInstancia().db_object(Tipo_producto.class));
         request.setAttribute("id_tipo", id_tipo);
         despachador = request.getRequestDispatcher("/index.jsp");

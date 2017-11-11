@@ -22,7 +22,7 @@ public class ServletProductos extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher despachador=null;
         
-        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class));
+        request.setAttribute("listaProductos", Conexion.getInstancia().db_object(Producto.class,"estado = 1"));
         despachador = request.getRequestDispatcher("/producto/productos.jsp");
         despachador.forward(request, response);
     }

@@ -33,7 +33,7 @@ public class ServletAgregarProducto extends HttpServlet {
         }
         request.setAttribute("editar", editar);
         request.setAttribute("listaTiposProducto", Conexion.getInstancia().db_object(Tipo_producto.class));
-        request.setAttribute("listaProveedor", Conexion.getInstancia().db_object(Proveedor.class));
+        request.setAttribute("listaProveedor", Conexion.getInstancia().db_object(Proveedor.class,"estado = 1"));
         despachador = request.getRequestDispatcher("/producto/admin/agregar-producto.jsp");
         despachador.forward(request, response);
     }
