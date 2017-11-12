@@ -52,7 +52,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-6"><span><label class="ng-binding">${articulos}</label></span><span> artículo(s)</span></div>
+                <!-- <div class="col-md-6"><span><label class="ng-binding">${articulos}</label></span><span> artículo(s)</span></div> -->
                 <div class="col-md-6">
                     <table class="pull-right">
                         <tbody>

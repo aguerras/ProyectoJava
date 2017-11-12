@@ -23,19 +23,21 @@
                     <a href="/ProyectoJava/Login">Login</a>
                 </li>
             <% } else { %>
-                <li>
-                    <a href="/ProyectoJava/producto/productos">Productos</a>
-                </li>
-                <li>
-                    <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
-                </li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Reportes</a>
-                    <div class="dropdown-content">
-                        <a href="/ProyectoJava/reportes/reporteBasico">Reporte de Facturas</a>
-                        <a href="/ProyectoJava/reportes/reporteProducto">Reporte de productos vendidos</a>
-                    </div>
-                </li>
+                <c:if test="${user.getId_rol().getId_rol() == 1}">
+                    <li>
+                        <a href="/ProyectoJava/producto/productos">Productos</a>
+                    </li>
+                    <li>
+                        <a href="/ProyectoJava/proveedor/proveedores">Proveedores</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn">Reportes</a>
+                        <div class="dropdown-content">
+                            <a href="/ProyectoJava/reportes/reporteBasico">Reporte de Facturas</a>
+                            <a href="/ProyectoJava/reportes/reporteProducto">Reporte de productos vendidos</a>
+                        </div>
+                    </li>
+                </c:if>
                 <li style="float: right;">
                     <a href="/ProyectoJava/Logout">Cerrar Sesion</a>
                 </li>
