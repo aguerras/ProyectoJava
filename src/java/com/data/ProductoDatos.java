@@ -60,8 +60,8 @@ public class ProductoDatos {
     
     //Función para insertar un tipo de producto en la DB.
     public void insertarTipoProducto(String nombre_tipo) {
-        Conexion.getInstancia().db_exec("INSERT INTO tipo_producto (nombre_tipo) "
-            + "VALUES ('"+ nombre_tipo + "')");
+        Conexion.getInstancia().db_exec("INSERT INTO tipo_producto (nombre_tipo,estado) "
+            + "VALUES ('"+ nombre_tipo + "',1)");
     }
     
     //Función para editar un tipo de producto en la DB.

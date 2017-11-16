@@ -29,7 +29,7 @@ public class Conexion {
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             //Conexión a DB de Google
-            conexion = DriverManager.getConnection("jdbc:mysql://146.148.78.170:3306/proyecto", "root", "root");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/proyecto", "root", "root");
             stm = conexion.createStatement();
         }catch(InstantiationException e){
             e.printStackTrace();
