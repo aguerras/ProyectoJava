@@ -31,7 +31,7 @@ public class ServletCarrito extends HttpServlet {
                 Pedido pedido = (Pedido) Conexion.getInstancia().db_object(Pedido.class, "id_usuario = " + id_usuario).get(0);
                 id_pedido = String.valueOf(pedido.getId_pedido());
                 if (!Conexion.getInstancia().db_string("SELECT count(*) FROM detalle_pedido WHERE id_pedido = " + id_pedido, "0").equals("0")) {
-                    request.setAttribute("articulos", PedidoDatos.getInstancia().numeroArticulos(id_pedido));
+                    // request.setAttribute("articulos", PedidoDatos.getInstancia().numeroArticulos(id_pedido));
                     request.setAttribute("total", pedido.getPrecio_total());
                     request.setAttribute("listaDetallePedidos", PedidoDatos.getInstancia().getPedidos(id_pedido));
                 }
