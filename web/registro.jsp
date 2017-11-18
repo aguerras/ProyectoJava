@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <select id="pais"  name="pais">
-                            <option value="1">Guatemala</option>
+                            <option value="2">Guatemala</option>
                         </select>
                         <div class="line"></div>
                     </div>
